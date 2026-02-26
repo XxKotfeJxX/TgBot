@@ -1,0 +1,6 @@
+﻿name = "tg-photo-bot"
+main = "src/worker.ts"
+compatibility_date = "2026-02-26"
+
+[vars]
+WEBHOOK_PATH = "/telegram/webhook"
