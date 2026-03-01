@@ -47,15 +47,14 @@ export function buildInlineResultReplyMarkup(ownerId: number, assetId: number, i
 export function buildInlineResult(row: PhotoRow, ownerId: number): Record<string, unknown> {
   const mediaType = normalizeMediaType(row.media_type);
   const id = buildInlineResultId(mediaType, row.id);
-  const reply_markup = buildInlineResultReplyMarkup(ownerId, row.id, Boolean(row.is_favorite));
+  void ownerId;
 
   if (mediaType === "video") {
     return {
       type: "video",
       id,
       video_file_id: row.file_id,
-      title: trimCaption(row.description, 60),
-      reply_markup
+      title: trimCaption(row.description, 60)
     };
   }
 
@@ -63,16 +62,14 @@ export function buildInlineResult(row: PhotoRow, ownerId: number): Record<string
     return {
       type: "gif",
       id,
-      gif_file_id: row.file_id,
-      reply_markup
+      gif_file_id: row.file_id
     };
   }
 
   return {
     type: "photo",
     id,
-    photo_file_id: row.file_id,
-    reply_markup
+    photo_file_id: row.file_id
   };
 }
 
